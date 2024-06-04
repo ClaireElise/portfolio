@@ -1,11 +1,29 @@
-import './assets/main.css'
+import "./assets/main.css";
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import App from './App.vue'
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import { Quasar } from "quasar";
+import quasarIconSet from "quasar/icon-set/mdi-v7";
 
-const app = createApp(App)
+// Import icon libraries
+import "@quasar/extras/material-icons/material-icons.css";
 
-app.use(createPinia())
+// Import Quasar css
+import "quasar/src/css/index.sass";
 
-app.mount('#app')
+import App from "./App.vue";
+import router from "./router";
+
+const app = createApp(App);
+
+app.use(createPinia());
+app.use(router);
+app.use(Quasar, {
+    plugins: {},
+    iconSet: quasarIconSet, // import Quasar plugins and add here
+    config: {
+        dark: "auto",
+    },
+});
+
+app.mount("#app");
